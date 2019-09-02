@@ -223,7 +223,7 @@ namespace JackAnalyzer
                     intVal = int.Parse(currentItem);
                     tokenType = "INT_CONST";
                 }
-                else if (currentItem.Substring(0,1).Equals("\""))
+                else if (currentItem.Substring(0, 1).Equals("\""))
                 {
                     tokenType = "STRING_CONST";
                     stringVal = currentItem.Substring(1, currentItem.Length - 1);
@@ -233,6 +233,19 @@ namespace JackAnalyzer
                     tokenType = "IDENTIFIER";
                     identifier = currentItem;
                 }
+
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public void DecrementPointer()
+        {
+            if (pointer > 0)
+            {
+                pointer--;
             }
         }
 
@@ -267,6 +280,53 @@ namespace JackAnalyzer
 
             }
             return strNoComments;
+        }
+
+        public string TokenType()
+        {
+            return tokenType;
+        }
+
+        // returns the keyword which is the current token, should be called only when tokenType() is keyword
+        public string KeyWord()
+        {
+            return keyWord;
+        }
+
+        // returns character which is current token, should be called only when tokenType() is symbol
+        public char Symbol()
+        {
+            return symbol;
+        }
+
+        // returns identifier which is the current token - should be called only when tokenType() is identifier
+        public string Identifier()
+        {
+            return identifier;
+        }
+
+        // returns integer value of the current token - should be called only when tokenType() is INT_CONST
+        public int IntVal()
+        {
+            return intVal;
+        }
+
+        // returns string value of current token without double quotes, should be called only when tokenType() is string_const
+        public string StringVal()
+        {
+            return stringVal;
+        }
+
+        public bool IsOperation()
+        {
+            for (int i = 0; i < operations.Length; i++)
+            {
+                if (operations[i] == symbol)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
