@@ -30,9 +30,11 @@ namespace JackAnalyzer
             indices.Add("var", 0);
         }
 
-        public void define(string strName, string strType, string strKind)
+        public void define(string var1, string var2, string var3)
         {
-            int index = indices[strKind];
+            int var4 = (int)this.indices[var3];
+
+
         }
     }
 }
