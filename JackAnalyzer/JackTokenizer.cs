@@ -21,7 +21,7 @@ namespace JackAnalyzer
         private string identifier;
         private string stringVal;
         private int intVal;
-        private int pointer;
+        private int pointer = 0;
         private bool first;
         private static int place = 0;
 
@@ -63,6 +63,8 @@ namespace JackAnalyzer
                     }
                 }
 
+                //FIX ARRAYS MAKE THEM LISTS!!!!!!!!
+                tokens = new string[500];
                 while (jackcode.Length > 0)
                 {
                     while (jackcode[0] == ' ')
@@ -147,6 +149,7 @@ namespace JackAnalyzer
 
         private static void Fill()
         {
+            keyWords = new string[21];
             keyWords[0] = ("class");
             keyWords[1] = ("constructor");
             keyWords[2] = ("function");
@@ -170,6 +173,7 @@ namespace JackAnalyzer
             keyWords[20] = ("let");
             operations = "+-*/&|<>=";
             symbols = "{}()[].,;+-*/&|<>=-~";
+            libraries = new string[11];
             libraries[0] = ("Array");
             libraries[1] = ("Math");
             libraries[2] = ("String");
